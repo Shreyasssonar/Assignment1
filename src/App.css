@@ -1,31 +1,25 @@
-/* Set background color for the entire app */
-body {
-  background-color: #fff5f5;
-}
-
 /* Style the container div */
 .container {
   display: flex;
   justify-content: space-between;
   padding: 20px;
   margin: 50px;
-  background-color: white; /* Set background color for the container */
-  border-radius: 15px; /* Add border radius to the container */
+  background-color: white;
+  border-radius: 15px; 
+  width: 100%;
   box-shadow: 0px 0px 10px 0px gray; 
 }
 
 /* Style the chart container */
 .chart-container {
-  width: 90%;
+  width: 70%; 
 }
 
 /* Style the table container */
 .table-container {
-  margin-left: 50px;
-  width: 35%;
-  height: 600px;
+  width: 30%; /* Adjust the width as needed */
+  height: 500px;
   overflow-y: auto;
-  margin-left: 20px;
   background-color: white; /* Set background color for the table container */
   border-radius: 15px; /* Add border radius to the table container */
   box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); /* Add shadow effect */
@@ -65,4 +59,16 @@ tr:hover {
 /* Hide scrollbar for webkit browsers */
 .table-container::-webkit-scrollbar {
   display: none;
+}
+
+
+
+/* Style the chart logo */
+.chart-logo {
+  position: absolute;
+  top: 480px; 
+  left: 600px; 
+  width: 200px; 
+  height: auto; 
+  z-index: 100; 
 }

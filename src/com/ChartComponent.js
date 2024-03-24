@@ -1,6 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { createChart } from 'lightweight-charts';
 
+import pngegg from './pngegg (22).png';
+
 function ChartComponent({ data, periods }) {
   const chartContainerRef = useRef(null);
   const chartInstance = useRef(null);
@@ -12,6 +14,7 @@ function ChartComponent({ data, periods }) {
       height: chartContainerRef.current.offsetHeight,
     });
 
+    // Add chart series and data
     const lineSeries = chartInstance.current.addAreaSeries({
       topColor: 'rgba(70, 130, 180, 0.5)', // Top color for gradient
       bottomColor: 'rgba(70, 130, 180, 0.1)', // Bottom color for gradient
@@ -23,13 +26,31 @@ function ChartComponent({ data, periods }) {
     }));
     lineSeries.setData(chartData);
 
-    // Calculate MaxDD and Days for each period
+    // Highlight periods on the chart
+    periods.forEach(period => {
+      const { Start_Date, End_Date } = period;
+      const highlightSeries = chartInstance.current.addAreaSeries({
+        topColor: 'rgba(255, 0, 0, 0.5)', // Top color for gradient
+        bottomColor: 'rgba(255, 0, 0, 0.1)', // Bottom color for gradient
+        lineWidth: 0,
+      });
+      const highlightData = [
+        { time: new Date(Start_Date).getTime(), value: 0 }, // Set value to highlight upper line
+        { time: new Date(End_Date).getTime(), value: 0 }, // Set value to highlight upper line
+      ];
+      highlightSeries.setData(highlightData);
+    });
+
+    // Prepare table data
     const formattedTableData = periods.map(({ Start_Date, End_Date }) => {
-      // Calculate MaxDD (assuming data contains pnl values)
-      const pnlValues = data.filter(({ date }) => date >= Start_Date && date <= End_Date).map(({ pnl }) => pnl);
+      // Filter data for the current period
+      const periodData = data.filter(({ date }) => date >= Start_Date && date <= End_Date);
+
+      // Calculate MaxDD for the current period
+      const pnlValues = periodData.map(({ pnl }) => pnl);
       const maxDD = calculateMaxDrawdown(pnlValues);
 
-      // Calculate Days
+      // Calculate Days for the current period
       const startDate = new Date(Start_Date);
       const endDate = new Date(End_Date);
       const days = Math.floor((endDate - startDate) / (1000 * 60 * 60 * 24));
@@ -37,7 +58,7 @@ function ChartComponent({ data, periods }) {
       return {
         Start_Date,
         End_Date,
-        MaxDD: maxDD.toFixed(2),
+        MaxDD: maxDD.toFixed(2), 
         Days: days,
       };
     });
@@ -72,7 +93,10 @@ function ChartComponent({ data, periods }) {
   // Render the component
   return (
     <div className="container">
-      <div className="chart-container" ref={chartContainerRef} />
+      <div className="chart-container" ref={chartContainerRef}>
+        { }
+        <img className="chart-logo" src={pngegg} alt="Logo" />
+      </div>
       <div className="table-container">
         <table>
           <thead>
