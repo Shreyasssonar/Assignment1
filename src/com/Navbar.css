@@ -1,37 +1,45 @@
-/* Navbar.css */
-
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #282c34;
-    padding: 10px 20px;
-  }
-  
-  .navbar-brand {
-    font-size: 1.5rem;
-    color: #fff;
-  }
-  
-  .navbar-menu {
-    list-style-type: none;
-    display: flex;
-    gap: 20px;
-  }
-  
-  .navbar-item {
-    padding: 0;
-  }
-  
-  .navbar-link {
-    text-decoration: none;
-    color: #fff;
-    font-size: 1.5rem;
-    transition: all 600ms ease;
-  }
-  
-  .navbar-link:hover {
-    text-decoration: none;
-    color: #bc9898;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo {
+  width: 50px; /* Adjust the width and height as needed */
+  height: 70px;
+  margin-right: 10px; /* Add some spacing between the logo and text */
+}
+
+.navbar-brand-text {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.navbar-menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navbar-item {
+  margin-right: 20px;
+}
+
+.navbar-link {
+  text-decoration: none;
+  color: #333333;
+  font-weight: bold;
+}
+
+.navbar-link:hover {
+  color: #007bff; /* Change the color on hover if needed */
+}
