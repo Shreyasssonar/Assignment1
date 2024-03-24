@@ -1,38 +1,68 @@
-.App {
-  text-align: center;
+/* Set background color for the entire app */
+body {
+  background-color: #fff5f5;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Style the container div */
+.container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+  padding: 20px;
+  margin: 50px;
+  background-color: white; /* Set background color for the container */
+  border-radius: 15px; /* Add border radius to the container */
+  box-shadow: 0px 0px 10px 0px gray; 
+}
+
+/* Style the chart container */
+.chart-container {
+  width: 90%;
+}
+
+/* Style the table container */
+.table-container {
+  margin-left: 50px;
+  width: 35%;
+  height: 600px;
+  overflow-y: auto;
+  margin-left: 20px;
+  background-color: white; /* Set background color for the table container */
+  border-radius: 15px; /* Add border radius to the table container */
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); /* Add shadow effect */
+}
+
+/* Style the table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid #ed3bd8; /* Add border with pink color */
+  border-radius: 10px;
+}
+
+/* Style table header and cells */
+th, td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ed3bd8; /* Add border bottom with pink color */
+}
+
+/* Style table header */
+th {
+  background-color: #ed3bd8;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* Alternate row background color */
+tr:nth-child(even) {
+  background-color: #f2f2f2;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Hover effect for table rows */
+tr:hover {
+  background-color: #ddd;
+}
+
+/* Hide scrollbar for webkit browsers */
+.table-container::-webkit-scrollbar {
+  display: none;
 }
