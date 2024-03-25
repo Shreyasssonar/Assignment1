@@ -1,74 +1,94 @@
-/* Style the container div */
+
 .container {
   display: flex;
   justify-content: space-between;
   padding: 20px;
-  margin: 50px;
+  margin: 5vw; 
   background-color: white;
-  border-radius: 15px; 
-  width: 100%;
-  box-shadow: 0px 0px 10px 0px gray; 
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px 0px gray;
+  width: 90%; 
+  max-width: 1200px; 
+  min-width: 1200px; 
 }
 
-/* Style the chart container */
 .chart-container {
   width: 70%; 
 }
 
-/* Style the table container */
 .table-container {
-  width: 30%; /* Adjust the width as needed */
-  height: 500px;
-  overflow-y: auto;
-  background-color: white; /* Set background color for the table container */
-  border-radius: 15px; /* Add border radius to the table container */
-  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); /* Add shadow effect */
+  width: 50%; 
+  max-width: 350px; 
+  height: 500px; 
+  overflow-y: auto; 
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
 }
 
-/* Style the table */
 table {
   width: 100%;
   border-collapse: collapse;
-  border: 2px solid #ed3bd8; /* Add border with pink color */
+  border: 2px solid #ed3bd8;
   border-radius: 10px;
 }
 
-/* Style table header and cells */
-th, td {
-  padding: 12px;
+th,
+td {
+  padding: 8px; 
   text-align: center;
-  border-bottom: 1px solid #ed3bd8; /* Add border bottom with pink color */
+  border-bottom: 1px solid #ed3bd8;
+  border-right: 1px solid #ed3bd8; /* Add border to the right of each cell */
 }
 
-/* Style table header */
 th {
   background-color: #ed3bd8;
   color: white;
+  border-right: none; /* No border on the right for the header cells */
 }
 
-/* Alternate row background color */
+
 tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-/* Hover effect for table rows */
 tr:hover {
   background-color: #ddd;
 }
 
-/* Hide scrollbar for webkit browsers */
 .table-container::-webkit-scrollbar {
   display: none;
 }
 
-
-
-/* Style the chart logo */
 .chart-logo {
   position: absolute;
-  top: 480px; 
-  left: 600px; 
-  width: 200px; 
-  height: auto; 
-  z-index: 100; 
+  top: 33vh;
+  left: 6vw; 
+  width: 12vw; 
+  height: auto;
+  z-index: 100;
+}
+
+@media (max-width: 1268px) {
+  .container {
+    flex-direction: column;
+    margin: 4vw auto; 
+  }
+
+  .chart-container {
+    width: 100%;
+  }
+
+  .table-container {
+    width: 100%;
+    max-width: auto;
+    height: auto;
+    max-height: auto;
+  }
+
+  .chart-logo {
+    top: 12vw;
+    left: 5vw;
+    width: 30vw;
+  }
 }

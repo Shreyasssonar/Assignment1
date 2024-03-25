@@ -14,10 +14,9 @@ function ChartComponent({ data, periods }) {
       height: chartContainerRef.current.offsetHeight,
     });
 
-    // Add chart series and data
     const lineSeries = chartInstance.current.addAreaSeries({
-      topColor: 'rgba(70, 130, 180, 0.5)', // Top color for gradient
-      bottomColor: 'rgba(70, 130, 180, 0.1)', // Bottom color for gradient
+      topColor: 'rgba(70, 130, 180, 0.5)',
+      bottomColor: 'rgba(70, 130, 180, 0.1)',
       lineColor: '#4682B4', 
     });
     const chartData = data.map(({ date, cumsum }) => ({
@@ -26,31 +25,24 @@ function ChartComponent({ data, periods }) {
     }));
     lineSeries.setData(chartData);
 
-    // Highlight periods on the chart
-    periods.forEach(period => {
+    periods.forEach((period, index) => {
       const { Start_Date, End_Date } = period;
       const highlightSeries = chartInstance.current.addAreaSeries({
-        topColor: 'rgba(255, 0, 0, 0.5)', // Top color for gradient
-        bottomColor: 'rgba(255, 0, 0, 0.1)', // Bottom color for gradient
-        lineWidth: 0,
+        topColor: `rgba(255, ${index * 30}, ${index * 30}, 0.5)`, 
+        bottomColor: `rgba(255, ${index * 30}, ${index * 30}, 0.1)`, 
+        lineWidth: 20,
       });
       const highlightData = [
-        { time: new Date(Start_Date).getTime(), value: 0 }, // Set value to highlight upper line
-        { time: new Date(End_Date).getTime(), value: 0 }, // Set value to highlight upper line
+        { time: new Date(Start_Date).getTime(), value: 0 },
+        { time: new Date(End_Date).getTime(), value: 0 },
       ];
       highlightSeries.setData(highlightData);
     });
 
-    // Prepare table data
     const formattedTableData = periods.map(({ Start_Date, End_Date }) => {
-      // Filter data for the current period
       const periodData = data.filter(({ date }) => date >= Start_Date && date <= End_Date);
-
-      // Calculate MaxDD for the current period
       const pnlValues = periodData.map(({ pnl }) => pnl);
       const maxDD = calculateMaxDrawdown(pnlValues);
-
-      // Calculate Days for the current period
       const startDate = new Date(Start_Date);
       const endDate = new Date(End_Date);
       const days = Math.floor((endDate - startDate) / (1000 * 60 * 60 * 24));
@@ -58,7 +50,7 @@ function ChartComponent({ data, periods }) {
       return {
         Start_Date,
         End_Date,
-        MaxDD: maxDD.toFixed(2), 
+        MaxDD: maxDD.toFixed(2),
         Days: days,
       };
     });
@@ -72,7 +64,6 @@ function ChartComponent({ data, periods }) {
     };
   }, [data, periods]);
 
-  // Function to calculate maximum drawdown
   const calculateMaxDrawdown = (values) => {
     let maxDD = 0;
     let peak = values[0];
@@ -90,7 +81,6 @@ function ChartComponent({ data, periods }) {
     return maxDD;
   };
 
-  // Render the component
   return (
     <div className="container">
       <div className="chart-container" ref={chartContainerRef}>
