@@ -38,13 +38,13 @@ td {
   padding: 8px; 
   text-align: center;
   border-bottom: 1px solid #ed3bd8;
-  border-right: 1px solid #ed3bd8; /* Add border to the right of each cell */
+  border-right: 1px solid #ed3bd8; 
 }
 
 th {
   background-color: #ed3bd8;
   color: white;
-  border-right: none; /* No border on the right for the header cells */
+  border-right: none; 
 }
 
 
@@ -60,14 +60,20 @@ tr:hover {
   display: none;
 }
 
-.chart-logo {
-  position: absolute;
-  top: 33vh;
-  left: 6vw; 
-  width: 12vw; 
-  height: auto;
-  z-index: 100;
+.chart-container {
+  position: relative; 
+  width: 70%; 
 }
+
+.chart-logo {
+  position: absolute; 
+  top: 10px; 
+  width: 100px; 
+  height: auto; 
+  z-index: 100;
+  opacity: 0.6;
+}
+
 
 @media (max-width: 1268px) {
   .container {

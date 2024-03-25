@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { createChart } from 'lightweight-charts';
-
 import pngegg from './pngegg (22).png';
+
 
 function ChartComponent({ data, periods }) {
   const chartContainerRef = useRef(null);
@@ -84,7 +84,6 @@ function ChartComponent({ data, periods }) {
   return (
     <div className="container">
       <div className="chart-container" ref={chartContainerRef}>
-        { }
         <img className="chart-logo" src={pngegg} alt="Logo" />
       </div>
       <div className="table-container">
